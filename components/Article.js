@@ -116,6 +116,8 @@ const data = [
 */
 
 const articleMaker = (article => {
+  
+  //Element Creation
   const div = document.createElement('div');
   const h2 = document.createElement('h2');
   const date = document.createElement('p');
@@ -124,6 +126,8 @@ const articleMaker = (article => {
   const p3 = document.createElement('p');
   const span = document.createElement('span');
   
+  //Content and Class Definition
+  div.classList.add('article');
   h2.appendChild(document.createTextNode(article.title));
   date.appendChild(document.createTextNode(article.date));
   date.classList.add('date');
@@ -132,16 +136,24 @@ const articleMaker = (article => {
   p3.appendChild(document.createTextNode(article.thirdParagraph));
   span.appendChild(document.createTextNode('+'))
   span.classList.add('expandButton');
+  
+  //Event Listener
+  span.addEventListener('click', () => {
+    div.classList.add('article-open');
+  })
 
+  //Implementation
   div.appendChild(h2);
   div.appendChild(date);
   div.appendChild(p1);
   div.appendChild(p2);
   div.appendChild(p3);
   div.appendChild(span);
+
+  return div;
 })
 
 const articles = document.querySelector('.articles');
-data.forEach(article => {
+data.forEach((article) => {
   articles.appendChild(articleMaker(article));
 })
