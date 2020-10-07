@@ -33,12 +33,28 @@ let menuItems = [
 */
 
 const menuMaker = (menu => {
+  //Element Creation
   const div = document.createElement('div');
   const ul = document.createElement('ul');
-  const students = document.createElement('li');
-  const faculty = document.createElement('li');
-  const whatsNew = document.createElement('li');
-  const techTrends = document.createElement('li');
-  const music = document.createElement('li');
-  const logOut = document.createElement('li');
+  
+  div.classList.add('menu');
+
+  //Menu List Generator
+  menu.forEach(menuItem => {
+    const newMenuItem = document.createElement('li');
+    newMenuItem.appendChild(document.createTextNode(menuItem))
+    ul.appendChild(newMenuItem);
+  });
+  
+
+  const menuButton = document.querySelector('.menu-button');
+  menuButton.addEventListener('click', () => {
+    div.classList.toggle('menu--open');
+  })
+
+  div.appendChild(ul);
+
+  return div;
 })
+
+document.querySelector('.header').appendChild(menuMaker(menuItems));

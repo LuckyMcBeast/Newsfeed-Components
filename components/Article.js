@@ -139,7 +139,7 @@ const articleMaker = (article => {
   
   //Event Listener
   span.addEventListener('click', () => {
-    div.classList.add('article-open');
+      div.classList.toggle('article-open')
   })
 
   //Implementation
